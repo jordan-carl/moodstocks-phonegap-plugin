@@ -32,8 +32,8 @@
 // -------------------------------------------------
 // Moodstocks API key/secret pair
 // -------------------------------------------------
-#define MS_API_KEY @"usg5zsgifbazhhib62ia"
-#define MS_API_SEC @"2Jc8RHrxzyvLWGcc"
+#define MS_API_KEY @"apiKey"
+#define MS_API_SEC @"apiSecret"
 
 @class MSScannerController;
 @implementation MoodstocksPlugin
@@ -100,37 +100,37 @@
     self.scanner = [[MSScannerController alloc] initWithHandler:scanHandler scanOptions:scanOptions plugin:self];
 
     [self.viewController presentModalViewController:self.scanner animated:YES];
-    
+
     [scanHandler release];
 }
 
 // Plugin method - pause: pause the scanner session
 - (void)pause:(CDVInvokedUrlCommand *) command {
-    
+
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                       messageAsString:@"Scanner result reset."];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    
+
     [self.scanner pause];
 }
 
 // Plugin method - resume: reset the result and resume the scanner session
 - (void)resume:(CDVInvokedUrlCommand *) command {
-    
+
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                       messageAsString:@"Scanner result reset."];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    
+
     [self.scanner resume];
 }
 
 // Plugin method - close: close the scanner
 - (void)dismiss:(CDVInvokedUrlCommand *) command {
-    
+
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                       messageAsString:@"Scanner close succeeded."];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    
+
     [self.scanner dismissAction];
 }
 
@@ -138,19 +138,19 @@
 - (void)updateScanResult:(NSString *)value
                   format:(int)format
                 callback:(NSString *)callback {
-    
+
     NSMutableDictionary *resultDict = [[[NSMutableDictionary alloc] init] autorelease];
-    
+
     // Scan result format
     [resultDict setObject:[NSNumber numberWithInteger:format] forKey:@"format"];
     // Scan result content
     [resultDict setObject:value forKey:@"value"];
-    
+
     CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                             messageAsDictionary:resultDict];
-    
+
     [result setKeepCallbackAsBool:YES];
-    
+
     NSString *js = [result toSuccessCallbackString:callback];
     [self writeJavascript:js];
 }
@@ -159,7 +159,7 @@
 - (void)dismissScanner:(NSString *)callback {
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     [pluginResult setKeepCallback:NO];
-    
+
     [self.commandDelegate sendPluginResult:pluginResult callbackId:callback];
     self.scanner = nil;
 }
