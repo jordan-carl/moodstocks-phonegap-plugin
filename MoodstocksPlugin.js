@@ -1,5 +1,6 @@
 var MoodstocksPlugin = {
 
+    // Callback validator
     callbackValidator: function(name, cb) {
         if(!cb) {
             return function() {};
@@ -129,5 +130,4 @@ var MoodstocksPlugin = {
 
         return cordova.exec(success, fail, "MoodstocksPlugin", "dismiss", []);
     }
-
 }
