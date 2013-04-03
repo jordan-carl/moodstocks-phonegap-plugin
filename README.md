@@ -1,6 +1,6 @@
 # Moodstocks SDK - PhoneGap Plugins
 
-Moodstocks PhoneGap plugins helps you to integrate Moodstocks SDK in your PhoneGap application. We provide iOS and Android version tested with PhoneGap v.2.3.0. There are 2 demos to help you get started:
+Moodstocks PhoneGap plugins helps you to integrate Moodstocks SDK in your PhoneGap application. We provide iOS and Android version tested with PhoneGap v.2.3.0 - v.2.5.0. There are 2 demos to help you get started:
 
 * [Basic PhoneGap Demo](https://github.com/Moodstocks/moodstocks-phonegap-demo-app)
 * [Sencha Touch Demo](https://github.com/Moodstocks/moodstocks-sencha-demo-app)
